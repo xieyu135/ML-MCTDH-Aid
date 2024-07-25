@@ -1,0 +1,14 @@
+{
+    "inp_name": "a",
+    "op_name": "a",
+    "tfinal": 1000.0,
+    "tout": 0.25,
+    "nstate": 2,
+    "nmode": 200,
+    "op_type": "s",
+    "n_triple": 0,
+    "fnm_kappa": "kappa.dat",
+    "fnm_omega": "omega_eV.dat",
+    "fnm_vmat": "vmat.dat",
+    "comment": "Please make sure the inp and op setting are consistent."
+}

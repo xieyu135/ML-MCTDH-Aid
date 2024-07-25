@@ -4,7 +4,7 @@ The purpose of the development of the ML-MCTDH-Aid suit is to set up a freely av
 
 Examples are given in the 'examples' directory.
 
-The brief introduction are given below.
+The brief introduction of the usage is given below.
 1. The generation of .inp and .op files
     After preparing the files: config.json  kappa.dat  omega_eV.dat  vmat.dat, run 'python /path/to/gener_inp_op.py' to generate .inp and .op files.
     Examples are given in examples/gener_inp_op. You can follow it to prepare input files.

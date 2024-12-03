@@ -2,9 +2,11 @@
 import re
 
 from tree import rebuildRightTreeLines
+#from primitive_cvg import npbasisCvg
 
-input_file = open("input", "r")
-output_file = open("output", "r")
+pop_thre = 0.99999
+input_f = open("input", "r")
+output_f = open("output", "r")
 new_input_file = ""
 
 input0 = []
@@ -17,7 +19,7 @@ output = []
 
 i = 0
 while True:
-    line = input_file.readline()
+    line = input_f.readline()
     if not line:
         break
     line = line.rstrip()
@@ -25,7 +27,7 @@ while True:
     if "mlbasis-section" in line and "end-mlbasis-section" not in line:
         input0.append(line)
         i = 1
-        line = input_file.readline().rstrip()
+        line = input_f.readline().rstrip()
 
     if "end-mlbasis-section" in line:
         i = 2
@@ -67,9 +69,9 @@ while True:
     # print(line)
 # for line in input2:
     # print(line)
-input_file.close()
+input_f.close()
 
-output = output_file.readlines()
+output = output_f.readlines()
 output = [line.rstrip() for line in output]
 # output = 
 
@@ -107,10 +109,9 @@ for i_output in range(len(output)):
             arg = line1.split(":")[1].split()
             arg = [float(x) for x in arg]
             for k in range(len(arg)):
-                #tmp = natPopMax[inode][j][k]
-                #tmp = max(arg[k], tmp)
-                #natPopMax[inode][j][k] = tmp
-                natPopMax[inode][j][k] = arg[k]
+                tmp = natPopMax[inode][j][k]
+                tmp = max(arg[k], tmp)
+                natPopMax[inode][j][k] = tmp
             i_output = ied
 
 precision0 = 0.0005
@@ -122,8 +123,6 @@ for inode in range(1, len(natPopMax)):
     else:
         precision = precision0 * 10
     for j in range(len(natPopMax[inode])):
-        sum_j = sum(natPopMax[inode][j])
-        print('sum_j:', sum_j)
         for k in range(len(natPopMax[inode][j]) - 1, 0, -1):
             tmp = natPopMax[inode][j][k]
             tmp1 = natPopMax[inode][j][k - 1]
@@ -153,14 +152,16 @@ for inode in range(1, len(nbasis)):
 # print(input1)
 input1 = rebuildRightTreeLines(input1)
 # print(input1)
-new_input_file = open(new_input_file, "w")
+new_input_f = open(new_input_file, "w")
 for line in input0:
-    new_input_file.write(line + "\n")
+    new_input_f.write(line + "\n")
 for i in range(len(nbasis)):
     # print(input1[i])
-    new_input_file.write(f'{input1[i]}\n')
+    new_input_f.write(f'{input1[i]}\n')
 for line in input2:
-    new_input_file.write(f'{line}\n')
-new_input_file.close()
-output_file.close()
+    new_input_f.write(f'{line}\n')
+new_input_f.close()
+output_f.close()
 
+
+#npbasisCvg(new_input_file, pop_thre)

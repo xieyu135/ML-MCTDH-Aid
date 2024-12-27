@@ -84,7 +84,7 @@ def npbasisCvg(new_input_file, pop_thre):
             mode = alist[0]
             # q_mean_abs = abs(float(alist[3]))
             q_mean = float(alist[3])
-            dq_mean = float(alist[4])
+            dq_mean = float(alist[5])
             q_mean_abs = (q_mean**2 + dq_mean**2)**0.5
             if q_mean_abs>mode_qmean_max_dict[mode]:
                 mode_qmean_max_dict[mode] = q_mean_abs
